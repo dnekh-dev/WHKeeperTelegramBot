@@ -1,19 +1,27 @@
 package dnekh.telegabot.enums;
 
+/**
+ * Enum representing fractions of a work shift.
+ */
 public enum WorkShiftFraction {
 
-    WHOLEDAY("1.0"),
-    UPTOFIVE("0.9"),
-    UPTOTHREE("0.6"),
-    UPTOTWELVE("0.4");
+    WHOLEDAY(1.0),
+    UPTOFIVE(0.9),
+    UPTOTHREE(0.6),
+    UPTOTWELVE(0.4);
 
-    private final String description;
+    private final double fraction;
 
-    WorkShiftFraction(String description) {
-        this.description = description;
+    WorkShiftFraction(double fraction) {
+        this.fraction = fraction;
     }
 
-    public String getDescription() {
-        return description;
+    /**
+     * Gets the numerical value of the work shift fraction.
+     *
+     * @return the fraction value.
+     */
+    public double getFraction() {
+        return fraction;
     }
 }

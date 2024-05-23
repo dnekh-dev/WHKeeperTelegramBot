@@ -1,58 +1,47 @@
 package dnekh.telegabot.handlers;
 
+import dnekh.telegabot.model.Settings;
+import dnekh.telegabot.model.Note;
+
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Utility class for converting hours worked into daily earnings.
+ */
 public class HoursConverter {
 
-    private int wage;
-    private double rate;
-    private double totalForThisDay;
+    private static final Map<Integer, Double> workShiftFractionMap = new HashMap<>();
 
-    //TODO delete this constructor after project end <<<<
-    // Constructor without parameters is not necessary unless you need it for specific purposes
-    public HoursConverter() {
+    //TODO review the coefficient determination system (and rewrite this initial block?)
+    static {
+        workShiftFractionMap.put(9, 1.0);
+        workShiftFractionMap.put(8, 0.9);
+        workShiftFractionMap.put(6, 0.6);
+        workShiftFractionMap.put(4, 0.4);
     }
 
-    // Constructor with initial wage and rate
-    public HoursConverter(int wage, double rate) {
-        setWage(wage);
-        setRate(rate);
-        this.totalForThisDay = calculateTotalForThisDay();
-    }
-
-    // Private method to calculate total earnings for the day
-    private double calculateTotalForThisDay() {
-        return this.wage * this.rate;
-    }
-
-    // Getter for wage
-    public int getWage() {
-        return wage;
-    }
-
-    // Setter for wage with validation
-    public void setWage(int wage) {
-        if (wage <= 0) {
-            throw new IllegalArgumentException("Wage must be greater than 0.");
+    /**
+     * Calculates the total earnings for the day based on settings and note.
+     *
+     * @param settings the settings object containing the wage information.
+     * @param note the note object containing the hours worked information.
+     * @return the total earnings for the day.
+     */
+    public static double calculateTotalForThisDay(Settings settings, Note note) {
+        if (settings == null || note == null) {
+            throw new IllegalArgumentException("Settings and Note must not be null");
         }
-        this.wage = wage;
-        this.totalForThisDay = calculateTotalForThisDay(); // Recalculate totalForThisDay whenever wage is updated
-    }
 
-    // Getter for rate
-    public double getRate() {
-        return rate;
-    }
+        int baseDailyWage = settings.getBaseDailyWage();
+        int hoursWorked = note.getHoursWorked();
 
-    // Setter for rate with validation
-    public void setRate(double rate) {
-        if (rate <= 0) {
-            throw new IllegalArgumentException("Rate must be greater than 0.");
+        Double fraction = workShiftFractionMap.get(hoursWorked);
+
+        if (fraction == null) {
+            throw new IllegalArgumentException("Invalid hoursWorked value: " + hoursWorked);
         }
-        this.rate = rate;
-        this.totalForThisDay = calculateTotalForThisDay(); // Recalculate totalForThisDay whenever rate is updated
-    }
 
-    // Getter for total earnings for the day
-    public double getTotalForThisDay() {
-        return totalForThisDay;
+        return baseDailyWage * fraction;
     }
 }
