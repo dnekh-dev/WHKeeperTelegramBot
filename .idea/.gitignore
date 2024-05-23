@@ -1,0 +1,65 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+
+# IntelliJ IDEA specific files
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# Project specific files
+/out/
+/target/
+build/
+
+# Maven specific files
+log/
+logs/
+!.mvn/wrapper/maven-wrapper.jar
+mvnw
+mvnw.cmd
+
+# Gradle specific files
+.gradle/
+!gradle/wrapper/gradle-wrapper.jar
+gradlew
+gradlew.bat
+
+# Java specific files
+*.class
+*.jar
+*.war
+*.ear
+
+# Temporary files
+*.swp
+*.swo
+*~
+
+# OS specific files
+.DS_Store
+Thumbs.db
+
+# Log files
+*.log
+
+# Configuration files
+*.properties
+*.yml
+*.yaml
+
+# Application specific files
+*.db
+*.sqlite
+
+# Ignore node_modules for JavaScript projects
+node_modules/
+
+# Ignore coverage reports
+coverage/
+*.lcov
+
+# Ignore IDE specific folders
+.vscode/
+
