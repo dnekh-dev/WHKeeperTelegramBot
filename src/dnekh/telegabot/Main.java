@@ -3,6 +3,7 @@ package dnekh.telegabot;
 import dnekh.telegabot.handlers.HoursConverter;
 import dnekh.telegabot.model.Note;
 import dnekh.telegabot.model.Settings;
+import dnekh.telegabot.model.User;
 
 import java.util.Scanner;
 
@@ -41,10 +42,12 @@ public class Main {
             hoursWorked = userInputOfHoursWorked;
         }
 
-        Settings settings = new Settings("@super", name, email, baseDailyWage);
-        System.out.println(settings.getUsername());
-        System.out.println(settings.getName());
-        System.out.println(settings.getEmail());
+        User user = new User("@meow", name, email);
+
+        Settings settings = new Settings(user, baseDailyWage);
+//        System.out.println(settings.getName());
+        System.out.println(settings.getUserName());
+        System.out.println(settings.getUserEmail());
         System.out.println(settings.getBaseDailyWage());
 
         Note note = new Note(hoursWorked);

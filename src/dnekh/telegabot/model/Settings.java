@@ -1,90 +1,93 @@
 package dnekh.telegabot.model;
 
 /**
- * The Settings class represents the settings associated with a user.
+ * Represents the settings for a user in the system.
  */
 public class Settings {
 
-    private final String username;
-    private String name;
-    private String email;
     private int baseDailyWage;
+    private final User user;
 
     /**
-     * Constructor with username, name, email, and baseDailyWage.
+     * Constructs a new Settings object with the specified user and base daily wage.
      *
-     * @param username      the username associated with the settings.
-     * @param name          the name associated with the settings.
-     * @param email         the email associated with the settings.
-     * @param baseDailyWage the base daily wage.
+     * @param user          the user associated with these settings
+     * @param baseDailyWage the base daily wage for the user
      */
-    public Settings(String username, String name, String email, int baseDailyWage) {
-        this.username = username;
-        this.name = name;
-        this.email = email;
+    public Settings(User user, int baseDailyWage) {
+        this.user = user;
         this.baseDailyWage = baseDailyWage;
     }
 
     /**
-     * Gets the username.
+     * Returns the base daily wage for the user.
      *
-     * @return the username.
-     */
-    public String getUsername() {
-        return username;
-    }
-
-    /**
-     * Gets the name.
-     *
-     * @return the name associated with the settings.
-     */
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * Sets the name.
-     *
-     * @param name the new name associated with the settings.
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    /**
-     * Gets the email.
-     *
-     * @return the email associated with the settings.
-     */
-    public String getEmail() {
-        return email;
-    }
-
-    /**
-     * Sets the email.
-     *
-     * @param email the new email associated with the settings.
-     */
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    /**
-     * Gets the base daily wage.
-     *
-     * @return the base daily wage.
+     * @return the base daily wage
      */
     public int getBaseDailyWage() {
         return baseDailyWage;
     }
 
     /**
-     * Sets the base daily wage.
+     * Sets the base daily wage for the user.
      *
-     * @param baseDailyWage the new base daily wage.
+     * @param baseDailyWage the new base daily wage
      */
     public void setBaseDailyWage(int baseDailyWage) {
         this.baseDailyWage = baseDailyWage;
+    }
+
+    /**
+     * Returns the name of the user.
+     *
+     * @return the user's name
+     */
+    public String getUserName() {
+        return user.getName();
+    }
+
+    /**
+     * Sets the name of the user.
+     *
+     * @param name the new name of the user
+     */
+    public void setUserName(String name) {
+        user.setName(name);
+    }
+
+    /**
+     * Returns the email of the user.
+     *
+     * @return the user's email
+     */
+    public String getUserEmail() {
+        return user.getEmail();
+    }
+
+    /**
+     * Sets the email of the user.
+     *
+     * @param email the new email of the user
+     */
+    public void setUserEmail(String email) {
+        user.setEmail(email);
+    }
+
+    /**
+     * Returns the unique Telegram ID of the user.
+     *
+     * @return the user's Telegram ID
+     */
+    public String getUserTelegramId() {
+        return user.getTelegramId();
+    }
+
+    /**
+     * Returns the user associated with these settings.
+     *
+     * @return the user
+     */
+    public User getUser() {
+        return user;
     }
 }

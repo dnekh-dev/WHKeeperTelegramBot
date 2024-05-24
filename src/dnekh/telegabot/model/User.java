@@ -1,84 +1,74 @@
 package dnekh.telegabot.model;
 
 /**
- * The User class represents a user with personal information and settings.
+ * Represents a user in the system.
  */
 public class User {
 
-    private final Settings settings;
-    private Note note;
+    private final String telegramId;
+    private String name;
+    private String email;
 
     /**
-     * Constructor with settings and note.
+     * Constructs a new User with the specified details.
      *
-     * @param settings the settings associated with the user.
-     * @param note     the note associated with the user.
+     * @param telegramId the unique Telegram ID of the user (cannot be changed once set)
+     * @param name       the name of the user
+     * @param email      the email of the user
      */
-    public User(Settings settings, Note note) {
-        this.settings = settings;
-        this.note = note;
+    public User(String telegramId, String name, String email) {
+        this.telegramId = telegramId;
+        this.name = name;
+        this.email = email;
     }
 
     /**
-     * Gets the username from settings.
+     * Returns the unique Telegram ID of the user.
      *
-     * @return the username.
+     * @return the Telegram ID
      */
-    public String getUsername() {
-        return settings.getUsername();
+    public String getTelegramId() {
+        return telegramId;
     }
 
     /**
-     * Gets the name from settings.
+     * Returns the name of the user.
      *
-     * @return the name of the user.
+     * @return the name
      */
     public String getName() {
-        return settings.getName();
+        return name;
     }
 
     /**
-     * Gets the email from settings.
+     * Returns the email of the user.
      *
-     * @return the email of the user.
+     * @return the email
      */
     public String getEmail() {
-        return settings.getEmail();
+        return email;
     }
 
     /**
-     * Gets the base daily wage from settings.
+     * Sets the name of the user.
+     * This method is protected and can be accessed only within the package or subclasses.
      *
-     * @return the base daily wage.
+     * @param name the new name of the user
      */
-    public int getBaseDailyWage() {
-        return settings.getBaseDailyWage();
+    protected void setName(String name) {
+        this.name = name;
     }
 
     /**
-     * Gets the note.
+     * Sets the email of the user.
+     * This method is protected and can be accessed only within the package or subclasses.
      *
-     * @return the note associated with the user.
+     * @param email the new email of the user
      */
-    public Note getNote() {
-        return note;
-    }
-
-    /**
-     * Sets the note.
-     *
-     * @param note the new note associated with the user.
-     */
-    public void setNote(Note note) {
-        this.note = note;
-    }
-
-    /**
-     * Gets the settings.
-     *
-     * @return the settings.
-     */
-    public Settings getSettings() {
-        return settings;
+    protected void setEmail(String email) {
+        if (email == null || !email.contains("@")) {
+            throw new IllegalArgumentException("Invalid email address");
+        }
+        this.email = email;
     }
 }

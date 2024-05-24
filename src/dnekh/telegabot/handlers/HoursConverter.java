@@ -25,7 +25,7 @@ public class HoursConverter {
      * Calculates the total earnings for the day based on settings and note.
      *
      * @param settings the settings object containing the wage information.
-     * @param note the note object containing the hours worked information.
+     * @param note     the note object containing the hours worked information.
      * @return the total earnings for the day.
      */
     public static double calculateTotalForThisDay(Settings settings, Note note) {
