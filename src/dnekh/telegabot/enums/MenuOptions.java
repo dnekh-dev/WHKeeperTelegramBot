@@ -9,7 +9,7 @@ public enum MenuOptions {
     HELP("/help"),
     SETWAGE("/setWage"),
     SETNAME("/setName"),
-    SETEMAIL("/setEmail"),  // Corrected typo from "/setRmail" to "/setEmail"
+    SETEMAIL("/setEmail"),  // Corrected typo from "/setEmail" to "/setEmail"
     GETSUMMARY("/getSummary");
 
     private final String description;
