@@ -1,6 +1,7 @@
 package dnekh.telegabot;
 
 import dnekh.telegabot.handlers.HoursConverter;
+import dnekh.telegabot.model.Menu;
 import dnekh.telegabot.model.Note;
 import dnekh.telegabot.model.Settings;
 import dnekh.telegabot.model.User;
@@ -12,6 +13,7 @@ public class Main {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
+
 
         int baseDailyWage = 0;
         String name = "";
@@ -45,6 +47,8 @@ public class Main {
         User user = new User("@meow", name, email);
 
         Settings settings = new Settings(user, baseDailyWage);
+        Menu menu = new Menu(settings);
+        menu.printMenu();
 //        System.out.println(settings.getName());
         System.out.println(settings.getUserName());
         System.out.println(settings.getUserEmail());

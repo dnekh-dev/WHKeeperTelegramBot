@@ -1,10 +1,11 @@
 package dnekh.telegabot.model;
 
+import dnekh.telegabot.handlers.UserHandler;
+
 /**
  * Represents a user in the system.
  */
 public class User {
-
     private final String telegramId;
     private String name;
     private String email;
@@ -13,13 +14,13 @@ public class User {
      * Constructs a new User with the specified details.
      *
      * @param telegramId the unique Telegram ID of the user (cannot be changed once set)
-     * @param name       the name of the user
-     * @param email      the email of the user
+     * @param name the name of the user
+     * @param email the email of the user
      */
     public User(String telegramId, String name, String email) {
         this.telegramId = telegramId;
-        this.name = name;
-        this.email = email;
+        this.setName(name);
+        this.setEmail(email);
     }
 
     /**
@@ -41,6 +42,21 @@ public class User {
     }
 
     /**
+     * Sets the name of the user.
+     * This method validates the name before setting it.
+     *
+     * @param name the new name of the user
+     * @throws IllegalArgumentException if the name is invalid
+     */
+    protected void setName(String name) {
+        if (UserHandler.validateName(name)) {
+            this.name = name;
+        } else {
+            throw new IllegalArgumentException("Invalid name. Name must contain only Latin letters.");
+        }
+    }
+
+    /**
      * Returns the email of the user.
      *
      * @return the email
@@ -50,25 +66,17 @@ public class User {
     }
 
     /**
-     * Sets the name of the user.
-     * This method is protected and can be accessed only within the package or subclasses.
-     *
-     * @param name the new name of the user
-     */
-    protected void setName(String name) {
-        this.name = name;
-    }
-
-    /**
      * Sets the email of the user.
-     * This method is protected and can be accessed only within the package or subclasses.
+     * This method validates the email before setting it.
      *
      * @param email the new email of the user
+     * @throws IllegalArgumentException if the email is invalid
      */
     protected void setEmail(String email) {
-        if (email == null || !email.contains("@")) {
-            throw new IllegalArgumentException("Invalid email address");
+        if (UserHandler.validateEmail(email)) {
+            this.email = email;
+        } else {
+            throw new IllegalArgumentException("Invalid email. Email must be in a standard format.");
         }
-        this.email = email;
     }
 }
