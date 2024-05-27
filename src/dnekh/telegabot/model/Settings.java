@@ -78,7 +78,7 @@ public class Settings {
      *
      * @return the user's Telegram ID
      */
-    public String getUserTelegramId() {
+    public TelegramId getUserTelegramId() {
         return user.getTelegramId();
     }
 

@@ -4,6 +4,7 @@ import dnekh.telegabot.handlers.HoursConverter;
 import dnekh.telegabot.model.Menu;
 import dnekh.telegabot.model.Note;
 import dnekh.telegabot.model.Settings;
+import dnekh.telegabot.model.TelegramId;
 import dnekh.telegabot.model.User;
 
 import java.util.Scanner;
@@ -44,7 +45,8 @@ public class Main {
             hoursWorked = userInputOfHoursWorked;
         }
 
-        User user = new User("@meow", name, email);
+        TelegramId telegramId = new TelegramId("meow");
+        User user = new User(telegramId, name, email);
 
         Settings settings = new Settings(user, baseDailyWage);
         Menu menu = new Menu(settings);

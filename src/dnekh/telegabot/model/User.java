@@ -6,19 +6,19 @@ import dnekh.telegabot.handlers.UserHandler;
  * Represents a user in the system.
  */
 public class User {
-    private final String telegramId;
+    private final TelegramId userTelegramId;
     private String name;
     private String email;
 
     /**
      * Constructs a new User with the specified details.
      *
-     * @param telegramId the unique Telegram ID of the user (cannot be changed once set)
+     * @param userTelegramId the unique Telegram ID of the user (cannot be changed once set)
      * @param name the name of the user
      * @param email the email of the user
      */
-    public User(String telegramId, String name, String email) {
-        this.telegramId = telegramId;
+    public User(TelegramId userTelegramId, String name, String email) {
+        this.userTelegramId = userTelegramId;
         this.setName(name);
         this.setEmail(email);
     }
@@ -28,8 +28,8 @@ public class User {
      *
      * @return the Telegram ID
      */
-    public String getTelegramId() {
-        return telegramId;
+    public TelegramId getTelegramId() {
+        return userTelegramId;
     }
 
     /**
